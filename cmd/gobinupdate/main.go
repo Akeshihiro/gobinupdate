@@ -133,6 +133,8 @@ func getGoModCacheDirPath() (string, error) {
 
 func updateGoTool(src string) error {
 	cmd := exec.Command("go", "install", src+"@latest")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 
 	return cmd.Run()
 }
